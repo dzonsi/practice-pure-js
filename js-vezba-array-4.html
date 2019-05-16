@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>JS-vezba-array-4</title>
+
+<style>
+
+</style>
+
+</head>
+
+<body>
+
+	<p id="p-1" ></p>
+	<p id="p-2" ></p>
+	<p id="p-3" ></p>
+	<p id="p-4" ></p>
+	<p id="p-5" ></p>
+	<p id="p-6" ></p>
+	<p id="p-7" ></p>
+	<p id="p-8" ></p>
+	<p id="p-9" ></p>
+	<p id="p-10" ></p>
+	<p id="p-11" ></p>
+	<p id="p-12" ></p>
+	<p id="p-13" ></p>
+	<p id="p-14" ></p>
+	<p id="p-15" ></p>
+	<p id="p-16" ></p>
+	<p id="p-17" ></p>
+	<p id="p-18" ></p>
+	<p id="p-19" ></p>
+	<p id="p-20" ></p>
+	<p id="p-21" ></p>
+	<p id="p-22" ></p>
+	<p id="p-23" ></p>
+	<p id="p-24" ></p>
+	<p id="p-25" ></p>
+	<p id="p-26" ></p>
+	<p id="p-27" ></p>
+	<p id="p-28" ></p>
+	<p id="p-29" ></p>
+	<p id="p-30" ></p>
+	<p id="p-31" ></p>
+	<p id="p-32" ></p>
+	<p id="p-33" ></p>
+	<p id="p-34" ></p>
+	<p id="p-35" ></p>
+
+	<script>// Jednom za svaki element u array-u izvrsi funkciju
+		var f = [83, 54, 23, 5, 99, 17, 44];
+		document.getElementById("p-1").innerHTML = f;
+		document.getElementById("p-1").style.color = "red";
+
+		var x = [83, 54, 23, 5, 99, 17, 44];
+		var t = "";
+		x.forEach(myFunction);
+		document.getElementById("p-2").innerHTML = t;
+
+		function myFunction(value, index, array) {
+			t +=  value * 2 + "<br>";
+		}
+	</script>
+
+	<script>// Kreira novi array izvrsavajuci funkciju na svakom elementu
+		var x = [83, 54, 23, 5, 99, 17, 44];
+		var y = x.map(myFunction);
+		document.getElementById("p-3").innerHTML = y;
+
+		function myFunction(value, index, array) {
+			return value / 2 + " ";
+		}
+	</script>
+
+	<script>// Kreira novi array sa elementima starog koji su prosli test
+		var x = [83, 54, 23, 5, 99, 17, 44];
+		var over50 = "Brojevi veci od 50: " + x.filter(myFunction);
+		document.getElementById("p-4").innerHTML = over50;
+
+		function myFunction(value, index, array) {
+			return  value > 50;
+		}
+	</script>
+
+	<script>/* Izvrsava funkciju na svakom elementu array-a da bi dobio jednu 
+	vrednost, sa leve na desnu stranu, ako se ne definise, total uzima vrednost
+	prvog broja*/
+		var x = [83, 54, 23, 5, 99, 17, 44];
+		var sum = x.reduce(myFunction);
+		document.getElementById("p-5").innerHTML = "Suma svih brojeva je: " + 
+		sum;
+
+		function myFunction(total, value, index, array) {
+			return total + value;
+		}
+	// total moze imati iniciajlnu vrednost
+		var sum2 = x.reduce(myFunction2, 100);
+		document.getElementById("p-6").innerHTML = "Suma svih brojeva " + 
+		"uvecana za 100 je: " + sum2;
+
+		function myFunction2(total, value, index, array) {
+			return total + value;
+		}
+	</script>
+
+	<script>/* Izvrsava funkciju na svakom elementu array-a da bi dobio jednu
+	 vrednost, sa desne na levu stranu, ako se ne definise, total uzima vrednost
+	prvog broja*/
+		var x = [83, 54, 23, 5, 99, 17, 44];
+		var sum = x.reduceRight(myFunction);
+		document.getElementById("p-7").innerHTML = "Suma svih brojeva je: " + 
+		sum;
+
+		function myFunction(total, value, index, array) {
+			return total + value;
+		}
+	// total moze imati iniciajlnu vrednost
+		var sum2 = x.reduce(myFunction2, 500);
+		document.getElementById("p-8").innerHTML = "Od broja 500 oduzmi sumu " + 
+		"svih brojeva: " + sum2;
+
+		function myFunction2(total, value, index, array) {
+			return total - value;
+		}
+	</script>
+
+	<script>// Proverava da li sve vrednsti u array-u prolaze zadati test
+		var x = [83, 54, 23, 5, 99, 17, 44];
+		var allOver50 = x.every(myFunction);
+		document.getElementById("p-9").innerHTML = "Da li su svi brojevi " + 
+		"u array-u veci od 50: " + allOver50;
+
+		function myFunction(value, index, array) {
+			return value > 50;
+		}
+	</script>
+
+	<script>// Proverava da li neka vrednost u array-u prolazi test
+		var x = [83, 54, 23, 5, 99, 17, 44];
+		var someOver50 = x.some(myFunction);
+		document.getElementById("p-10").innerHTML = "Da li su neki brojevi " + 
+		"u array-u veci od 50: " + someOver50;
+
+		function myFunction(value, index, array) {
+			return value > 50;
+		}
+	</script>
+
+	<script>/* Trazi zadatu vrednost u array-u i izbacuje njegovu poziciju,
+	moze imati startnu poziciju,koja broji od pozadi ako je negativna,ali trazi 
+	vrednost do kraja. Uvak vraca vrednost prvog pojavljivanja. */
+		var x = [83, 54, 23, 5, 99, 17, 44]; 
+		document.getElementById("p-11").innerHTML = "Broj 99 se nalazi " + 
+		"na: " + (x.indexOf(99) + 1 ) + " mestu u array.";
+	</script>
+
+	<script>/* Trazi zadatu vrednost u array-u pocevsi od kraja  i izbacuje 
+	njegovu poziciju,po redu spreda. Moze imati startnu poziciju,koja broji od 
+	pozadi ako je negativna,i trazi vrednost od kraja. Uvak vraca vrednost prvog
+	 pojavljivanja. */
+		var x = [83, 54, 23, 5, 99, 17, 44]; 
+		document.getElementById("p-12").innerHTML = "Broj 99 se nalazi " + 
+		"na: " + (x.lastIndexOf(99) + 1 ) + " mestu u array.";
+	</script>
+
+	<script>/* Vraca vrednost prvog elementa u array-u koji prolazi zadatu test
+	 funkciju. */
+		var x = [83, 54, 23, 5, 99, 17, 44];
+		var y = x.find(myFunction);
+		var z = x.find(myFunction2);
+
+		function myFunction(value, index, array) {
+			return value > 90;
+		}
+
+		function myFunction2(value, index, array) {
+			return value < 50;
+		}
+
+		document.getElementById("p-13").innerHTML = "Prvi broj u array veci " +
+		 "od broja 90 je broj: " + y;
+		document.getElementById("p-14").innerHTML = "Prvi broj u array manji " +
+		 "od broja 50 je broj: " + z;
+	</script>
+
+	<script>/* Vraca index prvog elementa u array-u koji prolazi zadatu test 
+	funkciju */
+		var x = [83, 54, 23, 5, 99, 17, 44];
+		var y = x.findIndex(myFunction);
+		var z = x.findIndex(myFunction2);
+
+		function myFunction(value, index, array) {
+			return value * 2 < 100;
+		}
+
+		function myFunction2(value, index, array) {
+			return value / 4 > 23;
+		}
+
+		document.getElementById("p-15").innerHTML = "Index prvog broja u array "
+		 + "koji je pomnozen sa 2 manji od 100 je: " + y;
+		document.getElementById("p-16").innerHTML = "Index prvog broja u array "
+		 + "koji je podeljen sa 4 veci od 23 je: " + z;
+	</script>
+
+	<script>// copyWithin() kopira izabrane elemente na odredjeno mesto
+		var yyy = ["Banana", "Orange", "Apple", "Mango", "Kiwi", "Papaya"];
+		document.getElementById("p-17").innerHTML = yyy.copyWithin(3,0,1);
+		document.getElementById("p-18").innerHTML = yyy.copyWithin(3,0,3);
+
+		// entries() kreira novi array od para iz array-a, banana je [0, banana]
+		document.getElementById("p-19").innerHTML = yyy.entries().next().value;
+
+		// fill() fill all the elements in array with static value
+		var zzz = ["Banana", "Orange", "Apple", "Mango", "Kiwi", "Papaya"];
+		document.getElementById("p-20").innerHTML = zzz.fill("Kiwi",2,4);
+		document.getElementById("p-21").innerHTML = zzz.fill("Kiwi");
+	</script>
+
+	<script> // Array.from() Creates an array from an object
+		var rrr = Array.from("ABCDEFG");
+		document.getElementById("p-22").innerHTML = rrr;
+
+		var qqq = "A B C D E F G";
+
+	/*	function clearEmpty(value) {
+			if ( value == " ") {
+				value = "";
+			}
+		}
+		document.getElementById("p-23").innerHTML = Array.from(qqq, clearEmpty()); */
+	</script>
+
+	<script> // includes() Check if an array contains the specified element
+		document.getElementById("p-24").innerHTML = yyy.includes("Mango");
+		document.getElementById("p-25").innerHTML = yyy.includes("Banana", 2);
+	</script>
+
+	<script> // join() joins elements of an array into a string, and returns the string
+		document.getElementById("p-26").innerHTML = yyy.join();
+		document.getElementById("p-27").innerHTML = yyy.join(" and ");
+	</script>
+	
+
+</body>
+
+</html>

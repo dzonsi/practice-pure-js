@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>JS-vezba-CSSStyleDeclaration Object</title>
+
+<style>
+	.nice {
+		color: dodgerblue !important;
+		border: 2px solid mediumseagreen;
+		border-radius: 4px;
+		padding: 7px;
+		font-size: 20px;
+	}
+	.nice2 {
+		color: dodgerblue;
+		border: 2px solid mediumseagreen;
+		border-radius: 4px;
+		padding: 7px;
+		font-size: 20px;
+	}
+</style>
+
+</head>
+
+<body>
+
+	<p id="p-1" class="nice">Some random text!</p>
+	<p id="p-2" style="color: red; font-size: 20px; border: 2px solid black; border-radius: 4px; padding: 7px;">Some random text!</p>
+	<p id="p-3" ></p>
+	<p id="p-4" ></p>
+	<p id="p-5" >Some random text!</p>
+	<p id="p-6" ></p>
+	<p id="p-7" ></p>
+	<p id="p-8" ></p>
+	<p id="p-9" ></p>
+	<p id="p-10" ></p>
+	<p id="p-11" ></p>
+	<p id="p-12" ></p>
+	<p id="p-13" ></p>
+	<p id="p-14" ></p>
+	<p id="p-15" ></p>
+	<p id="p-16" ></p>
+	<p id="p-17" ></p>
+	<p id="p-18" ><button onclick="remove()">Remove style property!</button></p>
+	<p id="p-19" class="nice2">Some random text!</p>
+	<p id="p-20" ><button onclick="restore()">Restore style property!</button></p>
+	<p id="p-21" ></p>
+	<p id="p-22" ></p>
+	<p id="p-23" ></p>
+	<p id="p-24" ></p>
+	<p id="p-25" ></p>
+	<p id="p-26" ></p>
+	<p id="p-27" ></p>
+	<p id="p-28" ></p>
+	<p id="p-29" ></p>
+	<p id="p-30" ></p>
+	<p id="p-31" ></p>
+	<p id="p-32" ></p>
+	<p id="p-33" ></p>
+	<p id="p-34" ></p>
+	<p id="p-35" ></p>
+	<p id="p-36" ></p>
+	<p id="p-37" ></p>
+	<p id="p-38" ></p>
+	<p id="p-39" ></p>
+	<p id="p-40" ></p>
+	<p id="p-41" ></p>
+
+	<script>// cssText Property samo inline style
+		var element = document.getElementsByTagName('p')[0];
+		var element2 = document.getElementsByTagName('p')[1];
+		var x = element.style.cssText;
+		var y = element2.style.cssText;
+		document.getElementById('p-3').innerHTML = x;
+		document.getElementById('p-4').innerHTML = y;
+		document.getElementById("p-5").style.cssText = "color: red !important; font-size: 20px; border: 2px solid black; border-radius: 4px; padding: 7px;";
+
+	</script>
+
+	<script>// style length samo inline style
+		document.getElementById('p-6').innerHTML = element.style.length;
+		document.getElementById('p-7').innerHTML = element2.style.length;
+		document.getElementById('p-8').innerHTML = 
+		document.getElementById("p-5").style.length;
+
+		var i, txt = "";
+		for (i = 0; i < element2.style.length; i++) {
+			txt += element2.style.item(i) + "<br>";
+		}
+		document.getElementById('p-9').innerHTML += txt;
+
+	</script>
+
+	<script>// parentRule property nece da radi
+		var s = document.styleSheets[0].rules[0].style;
+  		var ruleObj = s.parentRule;
+  		document.getElementById("p-10").innerHTML = ruleObj.cssText;
+	</script>
+
+	<script>// getPropertyPriority() vraca important ako ima, ako nema prazan string
+		var declaration = document.styleSheets[0].cssRules[0].style;
+		var priority = declaration.getPropertyPriority("color");
+  		document.getElementById("p-11").innerHTML = priority;
+  		var priority2 = element2.style.getPropertyPriority("color");
+  		document.getElementById("p-13").innerHTML = priority2;
+	</script>
+
+	<script>// getPropertyValue()
+		var propvalue = declaration.getPropertyValue("color");
+		document.getElementById("p-14").innerHTML = propvalue;
+		var propvalue2 = declaration.getPropertyValue("border");
+		document.getElementById("p-15").innerHTML = propvalue2;
+		var propvalue3 = element2.style.getPropertyValue("color");
+		document.getElementById("p-16").innerHTML = propvalue3;
+	</script>
+
+	<script>// item()
+		propname = element2.style.item(0);
+		propname2 = element2.style.item(1);
+		propname3 = element2.style.item(2);
+		document.getElementById("p-17").innerHTML = propname + propname2 + propname3;
+	</script>
+
+	<script>// removeproperty()
+		function remove() {
+			var x = document.styleSheets[0].cssRules[1].style;
+			x.removeProperty("color");
+			x.removeProperty("border");
+		}
+	</script>
+
+	<script>// setProperty()
+		function restore() {
+			var x = document.styleSheets[0].cssRules[1].style;
+			x.setProperty("color", "dodgerblue");
+			x.setProperty("border", "2px solid mediumseagreen");
+		}
+	</script>
+
+	<script>// Closure primer iz knjige
+		function makeAdder(x) {
+
+			return function add(y) {
+				return x + y;
+			};
+		}
+		var plusOne = makeAdder(1);
+
+		document.getElementById("p-21").innerHTML = plusOne(5);
+	</script>
+
+	<script>// object proba
+		var first = {
+			firstName: "Alvin",
+			lastName: "Camara",
+			age: 25
+		};
+		var second = first;
+		var third = first;
+		document.getElementById("p-22").innerHTML = first.firstName;
+		document.getElementById("p-23").innerHTML = second.firstName;
+		third.firstName = "Aron";
+		document.getElementById("p-24").innerHTML = first.firstName;
+		document.getElementById("p-25").innerHTML = second.firstName;
+
+		var fourth = 1;
+		var fifth = 2;
+		function change(x, y) {
+			var t = x;
+			x = y;
+			y = t;
+			document.getElementById("p-26").innerHTML = x;
+		}
+		change(fourth, fifth);
+		document.getElementById("p-27").innerHTML = fourth;
+
+	</script>
+
+</body>
+
+</html>

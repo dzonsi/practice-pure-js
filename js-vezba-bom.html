@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>JS-vezba-BOM</title>
+
+<style>
+
+</style>
+
+</head>
+
+<body>
+
+	<p id="p-1" ></p>
+	<p id="p-2" ><button onclick="openWin()">Open window!</button>
+	<button onclick="closeWin()">Close window!</button><button onclick="moveWinTo()">Move to...</button><button onclick="moveWinBy()">Move by...</button><button onclick="resizeWinBy()">Resize by...</button><button onclick="resizeWinTo()">Resize to...</button></p>
+	<p id="p-3" ></p>
+	<p id="p-4" ></p>
+	<p id="p-5" ></p>
+	<p id="p-6" ></p>
+	<p id="p-7" ></p>
+	<p id="p-8" ></p>
+	<p id="p-9" ></p>
+	<p id="p-10" ></p>
+	<p id="p-11" ></p>
+	<p id="p-12" ></p>
+	<p id="p-13" ></p>
+	<p id="p-14" ><input type="button" value="Load new document" onclick="newDoc()"></p>
+	<p id="p-15" ><input type="button" value="Go backward" onclick="goBackward()"><input type="button" value="Go forward" onclick="goForward()"></p>
+	<p id="p-16" ></p>
+	<p id="p-17" ></p>
+	<p id="p-18" ></p>
+	<p id="p-19" ></p>
+	<p id="p-20" ></p>
+	<p id="p-21" ></p>
+	<p id="p-22" ></p>
+	<p id="p-23" ></p>
+	<p id="p-24" ></p>
+	<p id="p-25" ></p>
+	<p id="p-26" ><button onclick="myAlert()">Alert Box</button><button onclick="myConfirm()">Confirm box</button><button onclick="myPrompt()">Prompt box</button></p>
+	<p id="p-27" ></p>
+	<p id="p-28" ></p>
+	<p id="p-29" ></p>
+	<p id="p-30" ></p>
+	<p id="p-31" ></p>
+	<p id="p-32" ></p>
+	<p id="p-33" ></p>
+	<p id="p-34" ></p>
+	<p id="p-35" ></p>
+	<p id="p-36" ></p>
+	<p id="p-37" ></p>
+	<p id="p-38" ></p>
+	<p id="p-39" ></p>
+	<p id="p-40" ></p>
+	<p id="p-41" ></p>
+
+	<script >// The Window Object
+		var w = window.innerWidth
+		|| document.documentElement.clientWidth
+		|| document.body.clientWidth;
+		var h = window.innerHeight
+		|| document.documentElement.clientHeight
+		|| document.body.clientHeight;
+
+		var x = document.getElementById('p-1');
+		x.innerHTML = "Browser inner window width: " + w + ", height: " + h + ".";
+
+		var myWindow;
+
+		function openWin() {
+			myWindow = window.open("", "", "width=400, height=400, top=200");
+			myWindow.document.write("<p>This is 'myWindow'</p>");
+		}
+
+		function closeWin() {
+			myWindow.close();
+		}
+
+		function moveWinTo() {
+			myWindow.moveTo(150, 150);
+			myWindow.focus();
+		}
+
+		function moveWinBy() {
+  			myWindow.moveBy(75, 50);
+  			myWindow.focus();
+		}
+		function resizeWinBy() {
+			myWindow.resizeBy(250, 250);
+			 myWindow.focus();
+		}
+		function resizeWinTo() {
+			myWindow.resizeTo(250, 250);
+			 myWindow.focus();
+		}
+	</script>
+
+	<script>// Window Screen
+		document.getElementById("p-3").innerHTML = "Screen Width: " + screen.width;
+		document.getElementById("p-4").innerHTML = "Screen Height: " + screen.height;
+		document.getElementById("p-5").innerHTML = "Available Screen Width: " +
+		screen.availWidth;
+		document.getElementById("p-6").innerHTML ="Available Screen Height: " + 
+		screen.availHeight;
+		document.getElementById("p-7").innerHTML ="Screen Color Depth: " + 
+		screen.colorDepth;
+		document.getElementById("p-8").innerHTML = "Screen Pixel Depth: " + 
+		screen.pixelDepth;
+	</script>
+
+	<script>// Window Location
+		document.getElementById("p-9").innerHTML ="Page location is " + 
+		window.location.href;
+		document.getElementById("p-10").innerHTML ="Page hostname is " + 
+		window.location.hostname;
+		document.getElementById("p-11").innerHTML ="Page path is " + 
+		window.location.pathname;
+		document.getElementById("p-12").innerHTML ="Page protocol is " + 
+		window.location.protocol;
+		document.getElementById("p-13").innerHTML ="Port number is " + 
+		window.location.port;
+
+		function newDoc() {
+			window.location.assign("https://www.google.com/")
+		}
+	</script>
+
+	<script>// Window History
+		
+		function goBackward() {
+			window.history.back()
+		}
+
+		function goForward() {
+			window.history.forward()
+		}
+	</script>
+
+	<script>// Window Navigator 
+		document.getElementById("p-16").innerHTML ="cookiesEnabled is " + 
+		navigator.cookieEnabled;
+		document.getElementById("p-17").innerHTML ="navigator.appName is " + 
+		navigator.appName;
+		document.getElementById("p-18").innerHTML ="navigator.appCodeName is " +
+		navigator.appCodeName;
+		document.getElementById("p-19").innerHTML ="navigator.product is " + 
+		navigator.product;
+		document.getElementById("p-20").innerHTML = navigator.appVersion;
+		document.getElementById("p-21").innerHTML = navigator.userAgent;
+		document.getElementById("p-22").innerHTML = navigator.platform;
+		document.getElementById("p-23").innerHTML = navigator.language;
+		document.getElementById("p-24").innerHTML = navigator.onLine;
+		document.getElementById("p-25").innerHTML = navigator.javaEnabled();
+	</script>
+
+	<script>// Alert Box
+		function myAlert() {
+  			alert("I am an alert box!\nHow are you?");
+		}
+	</script>
+
+	<script>// Confirm Box
+		function myConfirm() {
+			var txt; 
+			if (confirm("I am an confirm box!")) {
+				txt = "You pressed OK!";
+			} else {
+				txt = "You pressed Cancel!";
+			}
+			document.getElementById("p-27").innerHTML = txt;
+		}
+	</script>
+
+	<script>// Prompt Box
+		function myPrompt() {
+			var txt;
+			var person = prompt('Please enter your name:');
+			if (person == null || person == "") {
+				txt = "You cancel the prompt!";
+			} else {
+				txt = "Hello " + person + ". How are you today?";
+			}
+			document.getElementById("p-28").innerHTML = txt;
+		}
+	</script>
+
+</body>
+
+</html>

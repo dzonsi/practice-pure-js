@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>JS-vezba-string</title>
+<style>
+
+</style>
+
+</head>
+
+<body>
+
+	<p id="p-1" ></p>
+	<p id="p-2" ></p>
+	<p id="p-3" ></p>
+	<p id="p-4" ></p>
+	<p id="p-5" ></p>
+	<p id="p-6" ></p>
+	<p id="p-7" ></p>
+	<p id="p-8" ></p>
+	<p id="p-9" ></p>
+	<p id="p-10" ></p>
+	<p id="p-11" ></p>
+	<p id="p-12" ></p>
+	<p id="p-13" ></p>
+	<p id="p-14" ></p>
+	<p id="p-15" ></p>
+	<p id="p-16" ></p>
+	<p id="p-17" ></p>
+	<p id="p-18" ></p>
+	<p id="p-19" ></p>
+	<p id="p-20" ></p>
+	<p id="p-21" ></p>
+	<p id="p-22">Please visit Nike, Nike and Nike!</p>
+	<button onclick="myFunction1()">replace()</button>
+	<p id="p-23" >Please visit Microsoft!</p>
+	<button onclick="myFunction2()">replace() with //i</button>
+	<p id="p-24" >Please visit Microsoft, Microsoft and Microsoft!</p>
+	<button onclick="myFunction3()">replace() with //g</button>
+	<p id="p-25" >Hello World!</p>
+	<button onclick="myFunction4()">toUpperCase()</button>
+	<p id="p-26" >Hello World!</p>
+	<button onclick="myFunction5()">toLowerCase()</button>
+	<p id="p-27"></p>
+	<p id="p-28"></p>
+	<p id="p-29">Nike, Adidas and Reebok!</p>
+	<p id="p-30"></p>
+	<p id="p-31"></p>
+	<p id="p-32">ab,cd,ef</p>
+	<p id="p-33"></p>
+	<p id="p-34">Hello</p>
+	<p id="p-35"></p>
+	<p id="p-36">Hello</p>
+	<p id="p-37"></p>
+
+	<script>
+		var person = {
+			firstName: "John",
+			lastName: "Doe",
+			age: 50,
+			id: 5566,
+			position: "junior",
+			fullName: function() {
+				return this.firstName + " " + this.lastName;
+			},
+			fullInformation: function() {
+				return this.firstName + " " + this.lastName + " is " + this.age +
+				 " years old." + ", and he works as " + this.position + ".";
+			}
+		};
+		document.getElementById("p-1").innerHTML = person.fullName();
+		document.getElementById("p-2").innerHTML = person.fullName() + " is " + 
+		  person.age + " years old.";
+		document.getElementById("p-3").innerHTML = person.fullInformation();
+
+	</script>
+
+	<script>
+		var person = {
+			firstName: "John",
+			lastName: "Doe",
+			age: 50,
+			id: 5566,
+			position: "junior",
+			fullName: function() {
+				return this.firstName + " " + this.lastName + " is " + this.age +
+				 " years old." + ", and he works as " + this.position + ".";
+			}
+		};
+		var personTwo = "John Doe";
+		document.getElementById("p-4").innerHTML = person.firstName +
+		 person.lastName +" ID is " + person.id + ".";
+		document.getElementById("p-5").innerHTML = person.fullName();
+		document.getElementById("p-6").innerHTML = personTwo.length;
+		var x = "We are \"so-called\" Vikings from the north. \"\\\\\"";
+		document.getElementById("p-7").innerHTML = x;
+
+	</script>
+
+	<script>
+		var x = "Please locate where \"locate\" occurs!";
+		var y = x.indexOf("locate");
+		document.getElementById("p-8").innerHTML = y + " indexOf, position" +
+		" of first occurence of the word.";
+		var z = x.lastIndexOf("locate");
+		document.getElementById("p-9").innerHTML = z + " lastIndexOf, " +
+		"position of last occurence of the word.";
+		var f = x.indexOf("locate", 15);
+		document.getElementById("p-10").innerHTML = f + " indexOf with second " +
+		"parametar as starting position,both methods accept a second parameter.";
+		var g = x.search("locate");
+		document.getElementById("p-11").innerHTML = g + " search() method" +
+		 "returns the position of the first occurrence of a specified text" +
+		 "in a string.";
+	</script>
+
+	<script>
+		var x = "Apple, Orange, Kiwi, Banana, Strawberry";
+		document.getElementById("p-12").innerHTML = x;
+		var y = x.slice(7, 13);
+		document.getElementById("p-13").innerHTML = y + " using slice(7, 13)";
+		var z = x.slice(-18, -12);
+		document.getElementById("p-14").innerHTML = z + " using slice(-18, -12)";
+		var f = x.slice(15);
+		document.getElementById("p-15").innerHTML = f + " using slice(15)";
+		var g = x.slice(-18);
+		document.getElementById("p-16").innerHTML = g + " using slice(-18)";
+		var h = x.substring(29);
+		document.getElementById("p-17").innerHTML = h + " using substring(29)";
+		var j = x.substr(0, 5);
+		document.getElementById("p-18").innerHTML = j + " using substr(0, 5)";
+		var k = x.substr(20);
+		document.getElementById("p-19").innerHTML = k + " using substr(20)";
+		var l = x.substr(-24);
+		document.getElementById("p-20").innerHTML = l + " using substr(-24)";
+		var q = x.substr(15, 4);
+		document.getElementById("p-21").innerHTML = q + " using substr(15, 4)";
+	</script>
+	
+	<script>
+		function myFunction1() {
+			var x  = document.getElementById("p-22").innerHTML;
+			var y = x.replace("Nike", "Adidas");
+			document.getElementById("p-22").innerHTML = y;
+		}
+	</script>
+
+	<script>
+		function myFunction2() {
+			var f  = document.getElementById("p-23").innerHTML;
+			var g = f.replace(/MICROSOFT/i, "Apple");
+			document.getElementById("p-23").innerHTML = g;
+		}
+	</script>
+
+	<script>
+		function myFunction3() {
+			var f  = document.getElementById("p-24").innerHTML;
+			var g = f.replace(/Microsoft/g, "Apple");
+			document.getElementById("p-24").innerHTML = g;
+		}
+	</script>
+	<script>
+		function myFunction4() {
+			var f  = document.getElementById("p-25").innerHTML;
+			document.getElementById("p-25").innerHTML = f.toUpperCase();
+		}
+	</script>
+	<script>
+		function myFunction5() {
+			var f  = document.getElementById("p-26").innerHTML;
+			document.getElementById("p-26").innerHTML = f.toLowerCase();
+		}
+	</script>
+
+	<script>
+		var x = "Hello";
+		var y = "World!";
+		var z = x.concat(" ",y) + " Spojenim stringom.";
+		document.getElementById("p-27").innerHTML = z;
+	</script>
+
+	<script>
+		var x = "                     Hello World!";
+		document.getElementById("p-28").innerHTML = x.trim() + " string.trim()";
+	</script>
+
+	<script>
+		var x  = document.getElementById("p-29").innerHTML;
+		var y = x.charAt(0) + x.charAt(6) + x.charAt(17);
+		document.getElementById("p-30").innerHTML = y + " charAt()";
+	</script>
+
+	<script>
+		var x  = document.getElementById("p-29").innerHTML;
+		var y = x.charCodeAt(1);
+		document.getElementById("p-31").innerHTML = y + " charCodeAt(1)";
+	</script>
+
+	<script>
+		var x  = document.getElementById("p-32").innerHTML;
+		var y = x.split(",");
+		document.getElementById("p-33").innerHTML = y[1] + " split(,)";
+	</script>
+
+	<script>
+		var x  = document.getElementById("p-34").innerHTML;
+		var y = x.split("");
+		document.getElementById("p-35").innerHTML = y[2] + " split()";
+	</script>
+
+	<script>
+		var x  = document.getElementById("p-36").innerHTML;
+		var y = x.split("");
+		var text = "";
+		var z;
+		for (z = 0; z < y.length; z++) {
+			text +=y[z] + "<br>"
+		}
+		document.getElementById("p-37").innerHTML = text;
+	</script>
+
+	
+
+</body>
+
+</html>

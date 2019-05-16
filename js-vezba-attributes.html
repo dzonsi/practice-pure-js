@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>JS-vezba-DOM-attributes</title>
+
+<style>
+	.practice {
+		color: white;
+		font-size: 20px;
+		background-color: mediumseagreen;
+		padding: 10px;
+		border: 2px solid dodgerblue;
+		border-radius: 5px;
+	}
+	.practice2 {
+		color: white;
+		font-size: 20px;
+		background-color: dodgerblue;
+		padding: 10px;
+		border: 2px solid mediumseagreen;
+		border-radius: 5px;
+	}
+	.milan {
+		text-decoration: none;
+		font-size: 20px;
+		color: white;
+		background-color: red;
+		padding: 10px;
+		border: 4px solid black;
+		border-radius: 5px;
+	}
+	.milan:hover {
+		color: black;
+		background-color: white;
+		border-color: red;
+	}
+</style>
+
+</head>
+
+<body>
+
+	<p id="p-1" class="practice" onload="laznaFunkcija()" onclick="laznaFunkcija2() ">Some random text!</p>
+	<p id="p-2" ></p>
+	<p id="p-3" ><button>Change first p class!</button></p>
+	<p id="p-4" ></p>
+	<p id="p-5" ></p>
+	<p id="p-6" ></p>
+	<p id="p-7" ></p>
+	<p id="p-8" ></p>
+	<p id="p-9" ></p>
+	<p id="p-10" ></p>
+	<p id="p-11" ></p>
+	<p id="p-12" ></p>
+	<p id="p-13" ></p>
+	<p id="p-14" ></p>
+	<p id="p-15" ></p>
+	<p id="p-16" ></p>
+	<p id="p-17" ></p>
+	<p id="p-18" ></p>
+	<p id="p-19" ></p>
+	<p id="p-20" ></p>
+	<p id="p-21" ></p>
+	<p id="p-22" ></p>
+	<p id="p-23" ></p>
+	<p id="p-24" ></p>
+	<p id="p-25" ></p>
+	<p id="p-26" ></p>
+	<p id="p-27" ></p>
+	<p id="p-28" class="fake"></p>
+	<p id="p-29" ></p>
+	<p id="p-30" ></p>
+	<p id="p-31" ></p>
+	<p id="p-32" ></p>
+	<p id="p-33" ></p>
+	<p id="p-34" ></p>
+	<p id="p-35" ></p>
+	<p id="p-36" ></p>
+	<p id="p-37" ></p>
+	<p id="p-38" ></p>
+	<p id="p-39" ></p>
+	<p id="p-40" ></p>
+	<p id="p-41" ></p>
+
+	<script>// HTML DOM ...Attribute() Method
+		var q = document.getElementById("p-1");
+
+		 if (q.hasAttribute("id")) {
+		 	w = q.getAttribute("id");
+		 }
+		 if (q.hasAttribute("class")) {
+			e = q.getAttribute("class");
+		}
+		if (q.hasAttribute("onload")) {
+			r = q.getAttribute("onload");
+		}
+		if (q.hasAttribute("id")) {
+			t = q.getAttribute("onclick");
+		}
+
+		document.getElementById("p-2").innerHTML = "First paragraph id is: " + w +
+		", class: " + e + ", and has two more attributes, onload: " + r +
+		", and onclick: " + t + " .";
+
+		y = document.getElementsByTagName("button")[0];
+		y.setAttribute("onclick", "changeStyle()");
+		y.setAttribute("id", "btn1");
+
+		function changeStyle() {
+			var x = document.getElementById("p-1");
+			x.setAttribute("class", "practice2");
+		}
+
+		u = document.getElementsByTagName("p")[3];
+		u.innerHTML = "<button>Remove class from first p!</button>";
+		i = document.getElementsByTagName("button")[1];
+		i.setAttribute("onclick", "changeStyle2()");
+
+		function changeStyle2() {
+			var x = document.getElementById("p-1");
+			x.removeAttribute("class");
+		}
+
+		document.getElementById("p-5").innerHTML = 
+		 document.getElementById("btn1").attributes[0].name;
+		document.getElementById("p-6").innerHTML = 
+		 document.getElementById("btn1").attributes[0].value;
+
+		document.getElementById("p-7").innerHTML = "<button>Display link!</button>";
+
+		o = document.getElementsByTagName("button")[2];
+		var att = document.createAttribute("id");
+		att.value = "btn2";
+		o.setAttributeNode(att);
+
+		document.getElementById("p-8").innerHTML = o.attributes[0].name;
+		document.getElementById("p-9").innerHTML = o.attributes[0].value;
+
+		att2 = document.createAttribute("class");
+		o.setAttributeNode(att2);
+		o.attributes[1].value = "practice3";
+
+		document.getElementById("p-10").innerHTML = o.attributes[1].name;
+		document.getElementById("p-11").innerHTML = o.attributes[1].value;
+
+		document.getElementById("p-12").innerHTML = o.getAttributeNode("class").value;
+
+		var att3 = o.getAttributeNode("class");
+		o.removeAttributeNode(att3);
+
+		var att4 = document.createAttribute("onclick");
+		att4.value = "newLink()";
+		o.setAttributeNode(att4);
+
+		function newLink() {
+			document.getElementById("p-7").innerHTML = "<a><b>AC Milan</b></a>";
+			x = document.querySelector("a");
+			x.setAttribute("id", "acm");
+			x.setAttribute("class", "milan");
+			x.setAttribute("href", "https://www.acmilan.com/en");
+			att5 = document.createAttribute("target");
+			att5.value = "_blank";
+			x.setAttributeNode(att5);
+		}
+	</script>
+
+	<script>// Style method
+		document.getElementById("p-13").innerHTML = "Some random text!";
+
+		(function text() {
+			x = document.getElementById("p-13").innerHTML;
+			y = document.getElementsByTagName("p");
+			var i;
+			for (i = 13; i < y.length; i++) {
+				y[i].innerHTML = x;
+			}
+		})();
+
+		var qw = document.querySelectorAll("p");
+		qw[13].firstChild.nodeValue = "Ukupno ima " + 
+		document.getElementsByTagName("p").length + " paragraph.";
+
+		document.getElementById("p-15").style.fontSize = "20px";
+		qe = document.getElementById("p-15").style.fontSize;
+		document.getElementById("p-16").innerHTML = "Font-size of p with ID:p-15: " +
+		 qe;
+
+		(function color() {
+			var qr = document.querySelectorAll("p");
+			var i;
+			var s = 17;
+			for (i = 16; i < 20; i++){
+				qr[i].style.color = "dodgerblue";
+				qr[i].style.fontSize = s + "px";
+				s++;
+			}
+		})();
+
+		qt = document.getElementById("p-20").style.color;
+		document.getElementById("p-21").style.backgroundColor = qt;
+		qy = document.getElementById("p-22");
+		qy.style.padding = "10px";
+		qy.style.border = "3px solid " + qt;
+
+		qwe = document.getElementById("p-23");
+		qwe.innerHTML = "<button>Display font size od 'p-20' in 'p-24'!</button>";
+		att6 = document.createAttribute("onclick");
+		att6.value = "changeStyle3()";
+		qwe.setAttributeNode(att6);
+
+		function changeStyle3() {
+			var x, y, z;
+			x = document.getElementById("p-20").style.fontSize;
+			y = x.length - 2;
+			z = x.slice(0,y);
+			document.getElementById("p-24").style.fontSize = z + "px";
+		}
+
+		qwe2 = document.getElementById("p-25");
+		qwe2.innerHTML = "<button>Change color in 'p-26'!</button>";
+		att7 = document.createAttribute("onclick");
+		att7.value = "myFunction7()";
+		qwe2.setAttributeNode(att7);
+
+		var qwert = (function() {
+				 var x = document.getElementById("p-26");
+				 x.style.color = "red";
+				 return function () { y = x.style.color = "mediumseagreen"; return y;}
+			}
+		)();
+
+		function myFunction7() {
+  			 qwert();
+		}
+
+		var qwerty = document.getElementById("p-27").id;
+		document.getElementById("p-28").innerHTML = "ID od prethodnog p elementa je: " + qwerty;
+
+		var qwerty2 = document.getElementById("p-29");
+		qwerty2.innerHTML = "<img id='img1' src='../html-staro/su35.jpg' alt='su35' width='500' height='350'>";
+		
+		image1 = document.getElementById("img1");
+		document.getElementById("p-30").innerHTML = "Src od slike je: " + qwerty2.childNodes[0].src;
+		document.getElementById("p-31").innerHTML = "Src od slike je: " + image1.src;
+
+		
+
+	</script>
+
+</body>
+
+</html>

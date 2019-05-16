@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<script>
+
+function setCookie(cname,cvalue,exdays) {
+  var d = new Date();
+  d.setTime(d.getTime() + (exdays*24*60*60*1000)); // Vreme u milisekundama plus expiring time u miliselundama
+  var expires = "expires=" + d.toGMTString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/"; // Napravi cookie
+}
+
+function getCookie(cname) {
+  var name = cname + "=";
+  var decodedCookie = decodeURIComponent(document.cookie); // Trazi cookie i dekodira ga da bi ga vratio u formatu koji moze da se prepozna
+  var ca = decodedCookie.split(';'); // Od stringa pravi array, sece na ;, na razdvajanju dva razlicita cookie parametra 
+  for(var i = 0; i < ca.length; i++) { // za svaki element array-a
+    var c = ca[i]; 
+    while (c.charAt(0) == ' ') { // Uzima prvo slovo iz svakog stringa, poredi sa stringom ' ', izbaci svaki cookie parametar osim username
+      c = c.substring(1); // Ako je c ' ', c uzima vrednost c bez prvog slova, tj bez praznog mesta, postaje prazan string
+    }
+    if (c.indexOf(name) == 0) { // Trazi poziciju name-a u c i ako je jednaka 0,znaci da je c username,ako je prazan string indexOf vraca -1, uslov ne prolazi
+      return c.substring(name.length, c.length); /*Sece c na name.length kao prvo mesto( izbacuje username=), i c.length kao drugo(substring ne ukljucuje drugi parametar) i vraca novi string, to je user u chackCookie() */
+    }
+  }
+  return ""; // Vraca prazan string
+}
+
+function checkCookie() {
+  var user=getCookie("username"); // Pokrece getCookie funkciju
+  if (user != "") { // Ako je user prepoznan, tj nije prazan string, ide poruka
+    alert("Welcome again " + user);
+  } else { // Ako nije ide prompt box
+     user = prompt("Please enter your name:","");
+     if (user != "" && user != null) {
+       setCookie("username", user, 30); // Alo user nije prazan string ili null( cancel prompt) ide setCookie funkcija
+     }
+  }
+}
+</script>
+</head>
+
+<body onload="checkCookie()">
+
+  <p id="p-1"></p>
+
+  <script>
+    document.getElementById('p-1').innerHTML = document.cookie;
+  </script>
+</body>
+
+</html>

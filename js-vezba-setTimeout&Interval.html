@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>JS-vezba-setTimeout() and setInterval()</title>
+
+<style>
+	.d1 {
+		background-color: lightgrey;
+		height: 30px;
+	}
+	.d2 {
+		background-color: mediumseagreen;
+		height: 30px;
+		width: 1%;
+	}
+</style>
+
+
+</head>
+
+<body onload="startTime(), start()">
+
+	<p id="p-1" ><button onclick="openWin()">Open "myWindow"</button></p>
+	<p id="p-2" ></p>
+	<p id="p-3" ><button onclick="startCount()">Start count!</button>
+				<input type="text" id="txt">
+				<button onclick="stopCount()">Stop count!</button>
+	</p>
+	<p id="p-4" ></p>
+	<p id="p-5" ><button onclick="writeHello()">Star writing Hello!</button>
+				<button onclick="clearInterval(p)">Stop writing!</button>
+	</p>
+	<p id="p-6" ></p>
+	<div id="p-7" class="d1">
+		<div id="d1" class="d2">
+			
+		</div>
+	</div>
+	<p id="p-8" ><button onclick="progres()">Start progres bar!</button></p>
+	<p id="p-9" ><button onclick="setColor()">Change background color!</button>
+		<button onclick="keepColor()">Keep background color!</button>
+		<button onclick="returnWhite()">Return to white!</button>
+	</p>
+	<p id="p-10" ></p>
+	<p id="p-11" ></p>
+	<p id="p-12" ></p>
+	<p id="p-13" ></p>
+	<p id="p-14" ></p>
+	<p id="p-15" ></p>
+	<p id="p-16" ></p>
+	<p id="p-17" ></p>
+	<p id="p-18" ></p>
+	<p id="p-19" ></p>
+	<p id="p-20" ></p>
+	<p id="p-21" ></p>
+	<p id="p-22" ></p>
+	<p id="p-23" ></p>
+	<p id="p-24" ></p>
+	<p id="p-25" ></p>
+	<p id="p-26" ></p>
+	<p id="p-27" ></p>
+	<p id="p-28" ></p>
+	<p id="p-29" ></p>
+	<p id="p-30" ></p>
+	<p id="p-31" ></p>
+	<p id="p-32" ></p>
+	<p id="p-33" ></p>
+	<p id="p-34" ></p>
+	<p id="p-35" ></p>
+	<p id="p-36" ></p>
+	<p id="p-37" ></p>
+	<p id="p-38" ></p>
+	<p id="p-39" ></p>
+	<p id="p-40" ></p>
+	<p id="p-41" ></p>
+
+	<script>// setTimeout
+		function openWin() {
+			var myWindow = window.open("", "myWindow", "width=300, height=300");
+			myWindow.document.write("<p>This is 'myWindow'</p>");
+			setTimeout(function(){ myWindow.close()}, 9000);
+			setTimeout(function(){myWindow.moveTo(150, 150);myWindow.focus();}, 
+				3000);
+			setTimeout(function(){myWindow.moveTo(300, 300);myWindow.focus();}, 
+				6000);
+		}
+	</script>
+
+	<script>
+		function startTime() {
+			var today = new Date();
+			var h = today.getHours();
+			var m = today.getMinutes();
+			var s = today.getSeconds();
+
+			m = checkTime(m);
+			s = checkTime(s);
+
+			document.getElementById('p-2').innerHTML = h + ":" + m + ":" + s;
+			var t = setTimeout( function(){ startTime() }, 500);
+		}
+
+		function checkTime(i) {
+			if (i < 10) {
+				i = "0" + i;
+			}
+			return i;
+		}
+	</script>
+
+	<script>
+		var c = 0;
+		var t;
+		var timer_is_on = 0;
+
+		function startCount() {
+			if ( !timer_is_on) {
+				timer_is_on = 1;
+				timeCount();
+			}
+		}
+
+		function timeCount() {
+			document.getElementById("txt").value = c;
+			c = c + 1;
+			t = setTimeout(timeCount, 1000);
+		}
+
+		function stopCount() {
+			clearTimeout(t);
+			timer_is_on = 0;
+		}
+	</script>
+
+	<script>// setInterval
+		var z;
+
+		function start() {
+			z = setInterval(startTime2, 1000);
+		}
+
+		function startTime2() {
+			var today = new Date();
+			var h = today.getHours();
+			var m = today.getMinutes();
+			var s = today.getSeconds();
+
+			m = checkTime2(m);
+			s = checkTime2(s);
+
+			document.getElementById('p-4').innerHTML = h + ":" + m + ":" + s;
+		}
+
+		function checkTime2(i) {
+			if (i < 10) {
+				i = "0" + i;
+			}
+			return i;
+		}
+	</script>
+
+	<script>
+		var p;
+		var txt = "Hello! ";
+		function writeHello() {
+			p = setInterval(write, 1000);
+		}
+
+		function write() {
+			document.getElementById("p-6").innerHTML = txt;
+			txt = txt + "Hello! ";	
+		}
+	</script>
+
+	<script>
+		function progres() {
+			var elem = document.getElementById("d1");
+			var width = 1;
+			var id = setInterval(frame, 25);
+			function frame() {
+				if (width == 100) {
+					clearInterval(id);
+				} else {
+					width++;
+					elem.style.width = width + "%";
+				}
+			}
+		}
+	</script>
+
+	<script>
+		var tt;
+		var yy = 1;
+		var xx = document.body;
+
+		function setColor() {
+			xx.style.backgroundColor = "rgb(255, 245, 255)";
+			tt = setInterval(changeColor, 3000);
+		}
+
+		function changeColor() {
+			if (yy == 4) {
+				xx.style.backgroundColor = "rgb(240, 240, 240)";
+				yy = 3;
+			} else if (yy == 3) {
+				xx.style.backgroundColor = "linen";
+				yy = 2;
+			} else if (yy == 2) {
+				xx.style.backgroundColor = "rgb(255, 245, 255)";
+				yy = 1;
+			} else if (yy == 1) {
+				xx.style.backgroundColor = "rgb(238, 255, 238)";
+				yy = 4;
+			}
+		}
+
+		function keepColor() {
+			clearInterval(tt);
+		}
+
+		function returnWhite() {
+			xx.style.backgroundColor = "white";
+			clearInterval(tt);
+		}
+
+	</script>
+
+</body>
+
+</html>

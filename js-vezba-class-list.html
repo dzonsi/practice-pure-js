@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>JS-vezba-classList and other new things</title>
+
+<style>
+	.one {
+		color: red;
+		padding: 10px;
+		border: 1px solid black;
+		border-radius: 4px;
+	}
+	.two {
+		color: dodgerblue;
+		padding: 10px;
+		border: 1px solid tomato;
+		border-radius: 4px;
+	}
+	.three {
+		color: white;
+		background-color: mediumseagreen;
+		padding: 10px;
+		border-radius: 4px;
+	}
+	.four {
+		width: 400px;
+		height: 150px;
+	}
+</style>
+
+</head>
+
+<body>
+
+	<p id="p-1" ><button onclick="addClass()">Add class!</button></p>
+	<p id="p-2" >Some random text!</p>
+	<p id="p-3" ><button onclick="addClass2()">Add two class!</button>
+		<button onclick="remoweClass()">Remowe two class!</button>
+		<button onclick="addClass3()">Add class two!</button>
+		<button onclick="addClass4()">Add class three!</button>
+	</p>
+	<p id="p-4" >Some random text!</p>
+	<p id="p-5" ><button onclick="classLength()">Class length!</button>
+		<button onclick="classContains()">Does element contains class "two"!</button>
+		<button onclick="classContains2()">Does element contains class "thee"!</button>
+		<button onclick="classItem()">Class item 0!</button>
+		<button onclick="classItem2()">Class item 1!</button>
+		<button onclick="classListFunction()">Class list!</button>
+	</p>
+	<p id="p-6" ></p>
+	<p id="p-7" ><button onclick="classToggle()">Class toggle!</button>
+		<button onclick="classToggle2()">Second class toggle!</button>
+	</p>
+	<p id="p-8" class="one">Some random text!</p>
+	<p id="p-9" >Text in paragraph with id p-9!</p>
+	<p id="p-10" ></p>
+	<p id="p-11" ></p>
+	<p id="p-12" ></p>
+	<p id="p-13" ></p>
+	<p id="p-14" ></p>
+	<p id="p-15" ></p>
+	<p id="p-16" ></p>
+	<p id="p-17" ></p>
+	<p id="p-18" ></p>
+	<p id="p-19" ></p>
+	<p id="p-20" ></p>
+	<p id="p-21" ></p>
+	<p id="p-22" ></p>
+	<p id="p-23" ></p>
+	<p id="p-24" ></p>
+	<p id="p-25" ></p>
+	<p id="p-26" ></p>
+	<p id="p-27" ></p>
+	<p id="p-28" ></p>
+	<p id="p-29" ></p>
+	<p id="p-30" ></p>
+	<p id="p-31" ></p>
+	<p id="p-32" ></p>
+	<p id="p-33" ></p>
+	<p id="p-34" ></p>
+	<p id="p-35" ></p>
+	<p id="p-36" ></p>
+	<p id="p-37" ></p>
+	<p id="p-38" ></p>
+	<p id="p-39" ></p>
+	<p id="p-40" ></p>
+	<p id="p-41" ></p>
+
+	<script>// classList add, remowe, length, item, contains and toggle
+		function addClass() {
+			var x = document.getElementById('p-2');
+			x.classList.add("one");
+		}
+
+		function addClass2() {
+			var x = document.getElementById('p-4');
+			x.classList.add("two", "three");
+		}
+
+		function classLength() {
+			var x = document.getElementById('p-4');
+			var y = x.classList.length;
+			document.getElementById("p-6").innerHTML = y;
+		}
+
+		function remoweClass() {
+			var x = document.getElementById('p-4');
+			x.classList.remove("two", "three");
+		}
+
+		function addClass3() {
+			var x = document.getElementById('p-4');
+			x.classList.add("two");
+		}
+
+		function addClass4() {
+			var x = document.getElementById('p-4');
+			x.classList.add("three");
+		}
+
+		function classContains() {
+			var x = document.getElementById('p-4');
+			var y = x.classList.contains("two");
+			document.getElementById("p-6").innerHTML = y;
+		}
+
+		function classContains2() {
+			var x = document.getElementById('p-4');
+			var y = x.classList.contains("three");
+			document.getElementById("p-6").innerHTML = y;
+		}
+
+		function classItem() {
+			var x = document.getElementById('p-4');
+			var y = x.classList.item(0);
+			document.getElementById("p-6").innerHTML = y;
+		}
+
+		function classItem2() {
+			var x = document.getElementById('p-4');
+			var y = x.classList.item(1);
+			document.getElementById("p-6").innerHTML = y;
+		}
+
+		function classListFunction() {
+  			var x = document.getElementById("p-4");
+  			var y = x.classList;
+  			document.getElementById("p-6").innerHTML = y;
+		}
+// toggle uklanja klasu i vraca false, ako nema klase u elementu onda je dodaje i
+// vrace true, ako ima drugi parametar tera klasu da bude dodata ili uklonjena
+// falsr uklanja klasu, a true je dodaje
+		function classToggle() {
+			var x = document.getElementById("p-8");
+			x.classList.toggle("three");
+		}
+
+		function classToggle2() {
+			var x = document.getElementById("p-8");
+			x.classList.toggle("four");
+		}
+
+	</script>
+
+	<script>// nextElementSibling returns next sibling node as an element node
+	// ignores text and comment nodes
+		document.getElementById("p-10").innerHTML =
+		document.getElementById("p-8").nextElementSibling.innerHTML + 
+		" with p-8 nextElementSibling";
+	</script>
+
+	<script>// previousElementSibling returns the previous element of the 
+	// specified element, in the same tree level
+	// ignores text and comment nodes
+	// 
+		document.getElementById("p-11").innerHTML = 
+		document.getElementById("p-10").previousElementSibling.innerHTML + 
+		" with p-10 previousElementSibling";
+	</script>
+
+	<script>// children property
+	// return a collection of an elemet's child elemets, as an HTML Collection object
+	// accessed by index number
+	// only contain elements nodes, ingor text nodes and coments
+		var x = document.body.children;
+		document.getElementById("p-12").innerHTML = x.length;
+		x[8].style.color = "dodgerblue";
+		var i;
+		for (i = 9; i < 11; i++) {
+			x[i].style.color = "white";
+			x[i].style.backgroundColor = "dodgerblue";
+		}
+	</script>
+
+</body>
+
+</html>

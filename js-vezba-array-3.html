@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>JS-vezba-array-3</title>
+
+<style>
+
+</style>
+
+</head>
+
+<body>
+
+	<p id="p-1" ></p>
+	<p id="p-2" >
+		<button onclick="myFunction1()">Sort</button>
+		<button onclick="myFunction2()">Reverse</button>
+	</p>
+	<p id="p-3" ></p>
+	<p id="p-4" ></p>
+	<p id="p-5" ></p>
+	<p id="p-6" ><button onclick="myFunction3()">Sort numeric</button></p>
+	<p id="p-7" ></p>
+	<p id="p-8" ><button onclick="myFunction4()">Sort numeric reverse</button></p>
+	<p id="p-9" ></p>
+	<p id="p-10" ><button onclick="myFunction5()">Random</button></p>
+	<p id="p-11" ></p>
+	<p id="p-12" ></p>
+	<p id="p-13" ></p>
+	<p id="p-14" ></p>
+	<p id="p-15" ></p>
+	<p id="p-16" ></p>
+	<p id="p-17" ><button onclick="myFunction6()">Sort by year</button></p>
+	<p id="p-18" ></p>
+	<p id="p-19" ><button onclick="myFunction7()">Sort by name</button></p>
+	<p id="p-20" ></p>
+	<p id="p-21" ></p>
+	<p id="p-22" ></p>
+	<p id="p-23" ></p>
+	<p id="p-24" ></p>
+	<p id="p-25" ></p>
+	<p id="p-26" ></p>
+	<p id="p-27" ></p>
+	<p id="p-28" ></p>
+	<p id="p-29" ></p>
+	<p id="p-30" ></p>
+	<p id="p-31" ></p>
+	<p id="p-32" ></p>
+	<p id="p-33" ></p>
+	<p id="p-34" ></p>
+	<p id="p-35" ></p>
+
+	<script>// sort() sorts an array items alphabetically
+		var fruits = ["Banana", "Orange", "Apple", "Mango", "Kiwi"];
+		document.getElementById("p-1").innerHTML = fruits;
+
+		function myFunction1() {
+			document.getElementById("p-3").innerHTML = fruits.sort();
+		}
+		function myFunction2() { //reverse() revesrse the elements in an array
+			document.getElementById("p-3").innerHTML = fruits.reverse();
+		}
+	</script>
+
+	<script>
+		x = [67, 34, 5, 96, 22, 49, 80];
+		document.getElementById("p-4").innerHTML = x;
+		document.getElementById("p-5").innerHTML = x.sort();/* sort() ih redja
+		po alphabetical order gde je 34 < 5 jer je 5 > 3 pa samim tim ide posle */
+		y = [67, 34, 5, 96, 22, 49, 80];
+		document.getElementById("p-7").innerHTML = y;
+
+		function myFunction3() {// sort numeric
+			y.sort(function(a, b) {return a - b});
+			document.getElementById("p-7").innerHTML = y;
+		}
+		z = [67, 34, 5, 96, 22, 49, 80];
+		document.getElementById("p-9").innerHTML = z;
+
+		function myFunction4() {// sort numeric reverse
+			z.sort(function(a, b) {return b - a});
+			document.getElementById("p-9").innerHTML = z;
+		}
+		f = [67, 34, 5, 96, 22, 49, 80];
+		document.getElementById("p-11").innerHTML = f;
+
+		function myFunction5() {// sort random
+			f.sort(function(a, b){return 0.5 - Math.random()});
+			document.getElementById("p-11").innerHTML = f;
+		}
+		g = [67, 34, 5, 96, 22, 49, 80];// Najmanji i najveci broj
+		g.sort(function(a, b) {return a - b});
+		document.getElementById("p-12").innerHTML = "Najmanji broj je: " +
+		g[0] + "<br>" + "Najveci broj je: " + g[g.length - 1];
+		
+	</script>
+
+	<script>// highest number in an array using Math.max.apply
+		x = [67, 34, 5, 96, 22, 49, 80];
+		document.getElementById("p-13").innerHTML =
+		"Najveci broj je: " + myArrayMax(x);
+
+		function myArrayMax(arr) {
+			return Math.max.apply(null, arr);
+		}
+		// lowest number in an array using Math.min.apply
+		y = [67, 34, 5, 96, 22, 49, 80];
+		document.getElementById("p-14").innerHTML =
+		"Najmanji broj je: " + myArrayMin(y);
+
+		function myArrayMin(arr) {
+			return Math.min.apply(null, arr);
+		}
+	</script>
+
+	<script>// finding maximum value using "home made" method:
+		x = [67, 34, 5, 96, 22, 49, 80];
+		document.getElementById("p-15").innerHTML =
+		"Najveci broj je: " + myArrayMax(x);
+
+		function myArrayMax(arr) {
+			var len = arr.length;
+			var max = -Infinity;
+			while (len --) {
+				if (arr[len] > max) {
+					max = arr[len];
+				}
+			}
+			return max;
+		}
+	</script>
+
+	<script>// finding minimum value using "home made" method:
+		y = [67, 34, 5, 96, 22, 49, 80];
+		document.getElementById("p-16").innerHTML =
+		"Najmanji broj je: " + myArrayMin(y);
+
+		function myArrayMin(arr) {
+			var len = arr.length;
+			var min = Infinity;
+			while (len --) {
+				if (arr[len] < min ) {
+					min = arr[len];
+				}
+			}
+			return min;
+		}
+	</script>
+
+	<script>// Sorting array objects by year(By number):
+		var cars = [
+			{type:"Volvo", year:2016},
+			{type:"Saab", year:2014},
+			{type:"BMW", year:2012},
+			{type:"Mercedes", year:2010}
+		]
+		displayCars();
+
+		function myFunction6() {
+			cars.sort(function(a, b){return a.year - b.year});
+			displayCars();
+		}
+
+		function displayCars() {
+			document.getElementById("p-18").innerHTML = 
+			cars[0].type + " " + cars[0].year + "<br>" +
+			cars[1].type + " " + cars[1].year + "<br>" +
+			cars[2].type + " " + cars[2].year + "<br>" +
+			cars[3].type + " " + cars[3].year;
+		}
+	</script>
+
+	<script>//Sorting array objects by name (Alphabetically):
+		var cars = [
+			{type:"Volvo", year:2016},
+			{type:"Saab", year:2014},
+			{type:"BMW", year:2012},
+			{type:"Mercedes", year:2010}
+		]
+		displayCars2();
+
+		function myFunction7() {
+			cars.sort(function(a, b) {
+				var x = a.type.toLowerCase();
+				var y = b.type.toLowerCase();
+				if (x < y) {return -1;}
+				if (x > y) {return 1;}
+				return 0;
+			});
+			displayCars2();
+		}
+		function displayCars2() {
+			document.getElementById("p-20").innerHTML = 
+			cars[0].type + " " + cars[0].year + "<br>" +
+			cars[1].type + " " + cars[1].year + "<br>" +
+			cars[2].type + " " + cars[2].year + "<br>" +
+			cars[3].type + " " + cars[3].year;
+		}
+	</script>
+
+</body>
+
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>JS-vezba-HTML-DOM</title>
+
+<style>
+	#p-19 {
+		width: 300px;
+		height: 300px;
+		background-color: mediumseagreen;
+	}
+	#d-2 {
+		width: 50px;
+		height: 50px;
+		background-color: dodgerblue;
+	}
+</style>
+
+</head>
+
+<body>
+
+	<p id="p-1" >Hello World!</p>
+	<p id="p-2" ></p>
+	<p id="p-3" ></p>
+	<div id="d-1" class="d-1"><p id="p-4" >The DOM is very useful.</p></div>
+	<p id="p-5" ></p>
+	<p id="p-6" class="intro">The DOM </p>
+	<p id="p-7" class="intro">is very </p>
+	<p id="p-8" class="intro">useful!</p>
+	<p id="p-9" ></p>
+	<p id="p-10" ></p>
+	<p id="p-11" ></p>
+	<p id="p-12" ></p>
+	<div id="p-13" ><form id="frm1" action="">
+  					First name: <input type="text" name="fname" value="Donald"><br>
+  					Last name: <input type="text" name="lname" value="Duck"><br><br>
+  					<input type="submit" value="Submit">
+				</form> 
+
+	<p>Click "Try it" to display the value of each element in the form.</p>
+
+	<button onclick="myFunction()">Try it</button>
+
+	<p id="demo"></p>
+	</div>
+	<p id="p-14" ></p>
+	<p id="p-15" ></p>
+	<p id="p-16" >Paragraph <button onclick="document.getElementById('p-16').style.color = 'red'">Change</button></p>
+	<p id="p-17" >This is a text. This is a text. This is a text. This is a text.</p>
+	<p id="p-18" >
+		<input type="button" value="Hide text" onclick="document.getElementById('p-17').style.visibility='hidden'">
+		<input type="button" value="Show text" onclick="document.getElementById('p-17').style.visibility='visible'">
+	</p>
+	<div id="p-19" >
+		<div id="d-2"></div>
+	</div>
+	<p id="p-20" ><button onclick="animation()">Pokreni animaciju</button></p>
+	<p id="p-21" ></p>
+	<p id="p-22" ></p>
+	<p id="p-23" ></p>
+	<p id="p-24" ></p>
+	<p id="p-25" ></p>
+	<p id="p-26" ></p>
+	<p id="p-27" ></p>
+	<p id="p-28" ></p>
+	<p id="p-29" ></p>
+	<p id="p-30" ></p>
+	<p id="p-31" ></p>
+	<p id="p-32" ></p>
+	<p id="p-33" ></p>
+	<p id="p-34" ></p>
+	<p id="p-35" ></p>
+	<p id="p-36" ></p>
+	<p id="p-37" ></p>
+	<p id="p-38" ></p>
+	<p id="p-39" ></p>
+	<p id="p-40" ></p>
+	<p id="p-41" ></p>
+
+	<script>// Finding HTML Element by Id
+		var x = document.getElementById("p-1");
+		document.getElementById("p-2").innerHTML = "The text from p-1 paragraph is " +
+		x.innerHTML;
+	</script>
+
+	<script>// Finding HTML Elements by Tag Name
+		var y = document.getElementsByTagName('p');
+		document.getElementById("p-3").innerHTML = "The text in first paragraph " + 
+		"(index 0) is: " + y[0].innerHTML;
+
+		var z = document.getElementById("d-1");
+		var q = z.getElementsByTagName("p");
+		document.getElementById("p-5").innerHTML = 
+        'The first paragraph (index 0) inside "d-1" is: ' + q[0].innerHTML;
+	</script>
+
+	<script>// Finding HTML Elements by Class Name
+		var w = document.getElementsByClassName('intro');
+		document.getElementById("p-9").innerHTML = w[0].innerHTML + 
+		w[1].innerHTML + w[2].innerHTML;
+	</script>
+
+	<script>// Finding HTML Elements by CSS Selectors
+		var e = document.querySelectorAll("p.intro");
+		document.getElementById("p-10").innerHTML = e[0].innerHTML +
+		e[1].innerHTML + e[2].innerHTML;
+
+		var r = document.querySelectorAll("div.d-1 p");
+		document.getElementById("p-11").innerHTML = r[0].innerHTML;
+
+		var t = document.querySelectorAll("p#p-6");
+		document.getElementById("p-12").innerHTML = t[0].innerHTML;
+	</script>
+
+	<script>// Finding HTML Elements by HTML Object Collections
+		function myFunction() {
+ 			var x = document.forms["frm1"];
+  			var text = "";
+  			var i;
+  			for (i = 0; i < x.length ;i++) {
+    			text += x.elements[i].value + "<br>";
+  			}
+  			document.getElementById("demo").innerHTML = text;
+		}
+
+		document.getElementById("p-14").innerHTML = "The title of this document is: " + document.title;
+		document.getElementById("p-15").innerHTML = "Number of scripts: " +
+			document.scripts.length;
+	</script>
+
+	<script>// JavaScript HTML DOM - Changing HTML & CSS
+		var u = document.getElementById("p-15");
+		u.style.color = "dodgerblue";
+		u.style.fontSize = "32px";
+	</script>
+
+	<script>// DOM Animations
+		function animation() {
+			var elem = document.getElementById("d-2");
+			var pos = 50;
+			var id = setInterval(frame, 5);
+			function frame() {
+				if (pos == 300) {
+					clearInterval(id);
+				} else {
+					pos ++;
+					elem.style.width = pos + "px";
+					elem.style.height = pos + "px";
+				}
+			}
+		}
+	</script>
+
+</body>
+
+</html>

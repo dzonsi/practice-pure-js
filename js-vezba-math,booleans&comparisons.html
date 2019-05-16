@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>JS-vezba-Math, Booleans & Comparisons</title>
+
+<style>
+
+</style>
+
+</head>
+
+<body>
+
+	<p id="p-1" ></p>
+	<p id="p-2" ></p>
+	<p id="p-3" ></p>
+	<p id="p-4" ></p>
+	<p id="p-5" ></p>
+	<p id="p-6" ></p>
+	<p id="p-7" ></p>
+	<p id="p-8" ></p>
+	<p id="p-9" ></p>
+	<p id="p-10" ></p>
+	<p id="p-11" ></p>
+	<p id="p-12" ></p>
+	<p id="p-13" ></p>
+	<p id="p-14" ></p>
+	<p id="p-15" ></p>
+	<p id="p-16" ></p>
+	<p id="p-17" ></p>
+	<p id="p-18" ></p>
+	<p><button onclick="document.getElementById('p-19').innerHTML = getRndInteger(0, 10)" >Izbaci broj</button><span id="p-19"></span></p>
+	<p><button onclick="document.getElementById('p-20').innerHTML = getRndInteger2(0, 10)" >Izbaci broj</button><span id="p-20"></span></p>
+	<p id="p-21" ></p>
+	<p id="p-22" ></p>
+	<p id="p-23" ></p>
+	<p id="p-24" ></p>
+	<p id="p-25" ></p>
+	<p id="p-26" ></p>
+	<p id="p-27" ></p>
+	<p id="p-28" ></p>
+	<p id="p-29" ></p>
+	<p id="p-30" ></p>
+	<p id="p-31" ></p>
+	<p id="p-32" ></p>
+	<p id="p-33" ></p>
+	<p id="p-34" ></p>
+	<p id="p-35" ></p>
+	<p id="p-36" ></p>
+	<p id="p-37" ></p>
+	<p id="p-38" ></p>
+	<p id="p-39" ></p>
+	<p id="p-40" >Input your age and click the button</p>
+	<input id="age" value="18" />
+	<button onclick="myFunction()">Try it</button>
+	<p id="p-41" ></p>
+
+	<script>// Math
+		document.getElementById("p-1").innerHTML = Math.PI;
+		document.getElementById("p-2").innerHTML = Math.round(4.3);
+		document.getElementById("p-3").innerHTML = Math.pow(8, 3);
+		document.getElementById("p-4").innerHTML = Math.sqrt(64);
+		document.getElementById("p-5").innerHTML = Math.abs(-11.2);
+		document.getElementById("p-6").innerHTML = Math.ceil(11.2);
+		document.getElementById("p-7").innerHTML = Math.floor(11.2);
+		document.getElementById("p-8").innerHTML = Math.sin(60 * Math.PI / 180);
+		document.getElementById("p-9").innerHTML = Math.cos(60 * Math.PI / 180);
+		document.getElementById("p-10").innerHTML = Math.min(11, 34, 65);
+		document.getElementById("p-11").innerHTML = Math.max(11, 34, 65);
+		document.getElementById("p-12").innerHTML = Math.random();
+		document.getElementById("p-13").innerHTML = Math.floor(Math.random() * 10) + 
+		" Random number form 0 to 9.";
+		document.getElementById("p-14").innerHTML = Math.floor(Math.random() * 11) + 
+		" Random number form 0 to 10.";
+		document.getElementById("p-15").innerHTML = Math.floor(Math.random() * 100) +
+		" Random number form 0 to 99.";
+		document.getElementById("p-16").innerHTML = Math.floor(Math.random() * 101) +
+		" Random number form 0 to 100.";
+		document.getElementById("p-17").innerHTML = 
+			Math.floor(Math.random() * 10 + 1) + " Random number form 1 to 10.";
+		document.getElementById("p-18").innerHTML =
+			Math.floor(Math.random() * 100 + 1) + " Random number form 1 to 100.";
+
+		function getRndInteger(min, max) {
+			return Math.floor(Math.random() * (max - min)) + min;
+		}// min included, ,max excluded
+
+		function getRndInteger2(min, max) {
+			return Math.floor(Math.random() * (max - min + 1) ) + min;
+		}// Both included
+	</script>
+
+	<script>// Booleans & Comparisons
+		var x = 7;
+		var y = 11;
+		var z = "7";
+		document.getElementById("p-21").innerHTML = Boolean( x > y);
+		document.getElementById("p-22").innerHTML = Boolean( x > z);
+		document.getElementById("p-23").innerHTML = Boolean( x < z);
+		document.getElementById("p-24").innerHTML = Boolean( x == z);
+		document.getElementById("p-25").innerHTML = Boolean( x === z);
+		document.getElementById("p-26").innerHTML = Boolean( x != z);
+		document.getElementById("p-27").innerHTML = Boolean( x !== z);
+		document.getElementById("p-28").innerHTML = Boolean( x !== y);
+		document.getElementById("p-29").innerHTML = Boolean( (x + 4) >= y);
+		document.getElementById("p-30").innerHTML = Boolean( (y / 2) <= z);
+		document.getElementById("p-31").innerHTML = Boolean( x > 5 && y > 7);
+		document.getElementById("p-32").innerHTML = Boolean( x > 5 && y < 7);
+		document.getElementById("p-33").innerHTML = Boolean( x * 2 > y && y < z);
+		document.getElementById("p-34").innerHTML = Boolean( x > 5 || y > 7);
+		document.getElementById("p-35").innerHTML = Boolean( x > 5 || y < 7);
+		document.getElementById("p-36").innerHTML = Boolean( x * 2 > y || y / 2 > z);
+		document.getElementById("p-37").innerHTML = Boolean( x > 9 || x > 6 && x < y);
+		document.getElementById("p-38").innerHTML = !( x < y);
+		var f = 9;
+		var g = (f < 10) ? "Manje od 10":"Vece od 10";
+		document.getElementById("p-39").innerHTML = g;
+
+	</script>
+
+	<script>
+		function myFunction() {
+  			var age, voteable;
+  			age = Number(document.getElementById("age").value);
+  			if (isNaN(age)) {
+   				voteable = "Input is not a number";
+  			} else {
+   				voteable = (age < 18) ? "Too young" : "Old enough";
+  			}
+  			document.getElementById("p-41").innerHTML = voteable;
+		}
+	</script>
+
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>JS-vezba-AJAX</title>
+
+<style>
+	
+
+</style>
+
+</head>
+
+<body>
+
+	<script>
+		function loadDoc() {
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					document.getElementById("vezba").innnerHTML = 
+					this.getAllResponseHeaders();
+				}
+			};
+			xhttp.open("GET", "ajax_example.txt", true);
+			xhttp.send();
+		}
+	</script>
+
+	<script>
+		function loadDoc() {
+			var xhttp = new XMLHttpRequest() {
+				if (this.reasyState == 4 && this.status == 200) {
+					document.getElementById("vezba").innnerHTML = 
+					this.responseText;
+				}
+			};
+			xhttp.open("GET", "ajax_info.txt", true);
+			xhttp.send();
+		}
+	</script>
+
+	<script>
+		dbParam = JSON.stringify(obj);
+		var xmlhttp = new XMLHttpRequest();
+		xmlhtt.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				myObj = JSON.parse(this.responseText);
+				document.getElementById("vezba").innnerHTML =
+				myObj;
+			}
+			xmlhttp.open("POST", "json_demo_db_post.php", true);
+			xmlhttp.setRequestHeader("Xontent-type",
+			 "application/x-www-form-urlencoded");
+			xmlhttp.send("x=" + dbParam);
+		}
+	</script>
+
+</body>
+
+</html>

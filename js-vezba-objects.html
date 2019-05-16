@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>JS-vezba-Objects</title>
+
+<style>
+
+</style>
+
+</head>
+
+<body>
+
+	<p id="p-1" ></p>
+	<p id="p-2" ></p>
+	<p id="p-3" ></p>
+	<p id="p-4" ></p>
+	<p id="p-5" ></p>
+	<p id="p-6" ></p>
+	<p id="p-7" ></p>
+	<p id="p-8" ></p>
+	<p id="p-9" ></p>
+	<p id="p-10" ></p>
+	<p id="p-11" ></p>
+	<p id="p-12" ></p>
+	<p id="p-13" ></p>
+	<p id="p-14" ></p>
+	<p id="p-15" ></p>
+	<p id="p-16" ></p>
+	<p id="p-17" ></p>
+	<p id="p-18" ></p>
+	<p id="p-19" ></p>
+	<p id="p-20" ></p>
+	<p id="p-21" ></p>
+	<p id="p-22" ></p>
+	<p id="p-23" ></p>
+	<p id="p-24" ></p>
+	<p id="p-25" ></p>
+	<p id="p-26" ></p>
+	<p id="p-27" ></p>
+	<p id="p-28" ></p>
+	<p id="p-29" ></p>
+	<p id="p-30" ></p>
+	<p id="p-31" ></p>
+	<p id="p-32" ></p>
+	<p id="p-33" ></p>
+	<p id="p-34" ></p>
+	<p id="p-35" ></p>
+	<p id="p-36" ></p>
+	<p id="p-37" ></p>
+	<p id="p-38" ></p>
+	<p id="p-39" ></p>
+	<p id="p-40" ></p>
+	<p id="p-41" ></p>
+
+	<script>// Objects propertis and method
+		var txt = "";
+		var person = {fname:"John", lname:"Doe", age:"25", id:"5566"};
+		var x;
+		for (x in person) {
+			txt += person[x] + " ";
+		}
+		document.getElementById('p-1').innerHTML = txt;
+		person.nationality = "English";
+		person.eyeColor = "blue";
+		document.getElementById('p-2').innerHTML = person["fname"] + " " +person["lname"] +
+		" is " + person["age"] + " years old,he has " + person["eyeColor"] + " eyes " +
+		",his nationality is " + person["nationality"] + " , and his ID is: " +
+		person["id"] + ".";
+		delete person.nationality;
+		document.getElementById('p-3').innerHTML = person.nationality;
+		person.fullName = function() {
+			return this.fname + " " + this.lname;
+		}
+		document.getElementById('p-4').innerHTML = person.fullName();
+		person.fullId = function() {
+			return this.fname + " " + this.lname + ", ID: " + this.id + ".";
+		}
+		document.getElementById('p-5').innerHTML = person.fullId();
+	</script>
+
+	<script>// Getters and Setters
+		var person2 = {
+			firstName: "Julio",
+			lastName: "Jones",
+			language: "en",
+			get lang() {
+				return this.language;
+			}
+		};
+		document.getElementById('p-6').innerHTML = person2.lang;
+
+		var person3 = {
+			firstName: "Antonio",
+			lastName: "Brown",
+			language: "NO",
+			set lang(value) {
+				this.language = value;
+			}
+		};
+		person3.lang = "en";
+		document.getElementById('p-7').innerHTML = person3.language;
+
+		var person4 = {
+			firstName: "Devonte",
+			lastName: "Adams",
+			language: "en",
+			get lang() {
+				return this.language.toUpperCase();
+			}
+		};
+		document.getElementById('p-8').innerHTML = person4.lang;
+
+		var person5 = {
+			firstName: "Rendall",
+			lastName: "Cobb",
+			language: "",
+			set lang(lang) {
+				this.language = lang.toUpperCase();
+			}
+		};
+		person5.lang = "en";
+		document.getElementById('p-9').innerHTML = person5.language;
+
+		var obj = {
+			counter: 0,
+			get reset() {
+				this.counter = 0;
+			},
+			get increment() {
+				this.counter++;
+			},
+			get decrement() {
+				this.counter--;
+			},
+			set add(value) {
+				this.counter += value;
+			},
+			set substract(value) {
+				this.counter -= value;
+			}
+		};
+
+		obj.reset;
+		obj.add = 7;
+		obj.substract = 2;
+		obj.increment;
+		obj.decrement;
+		document.getElementById('p-10').innerHTML = obj.counter;
+	</script>
+
+	<script>// Object constructor
+		function Person(first, last, age, eye) {
+			this.firstName = first;
+			this.lastName = last;
+			this.age = age;
+			this.eyeColor = eye;
+			this.fullName = function() {
+				return this.firstName + " " + this.lastName
+			};
+			this.changeLastName = function (name) {
+				this.lastName = name;
+			}
+		}
+
+		var myFather = new Person("Mark", "Ingram", 29, "blue");
+		var myMother = new Person("Sally", "Rally", 26, "green");
+
+		document.getElementById('p-11').innerHTML = "My father name is " +
+		myFather.firstName + ", and my mother name is " + myMother.firstName + 
+		", they are " + myFather.age + " and " + myMother.age + " years old.";
+
+		document.getElementById('p-12').innerHTML = "My father name is " +
+		 myFather.fullName() + ".";
+
+		 var mySister = new Person("Sara", "Rally", 12, "brown");
+		 document.getElementById('p-13').innerHTML = "My sister is " + 
+		 mySister.fullName() + ".";
+		 mySister.changeLastName("Ingram");
+		 document.getElementById('p-14').innerHTML = "My sister is " + 
+		 mySister.fullName() + ".";
+	</script>
+
+	<script>// Objects prototype
+		Person.prototype.nationality = "English";
+		document.getElementById('p-15').innerHTML = myFather.nationality;
+		Person.prototype.combination = function() {
+			return this.firstName + " has " + this.eyeColor + " eye color.";
+		}
+		document.getElementById('p-16').innerHTML = myFather.combination();
+	</script>
+
+	<script>// Object Methods
+		Object.defineProperty(myFather, "age", {value: 35});// Dodaje ili menja property
+		document.getElementById('p-17').innerHTML = myFather.age;
+		Object.defineProperty(myFather, "age", {writable:false});// Read-only
+		myFather.age = 20;
+		document.getElementById('p-18').innerHTML = myFather.age;
+		document.getElementById('p-19').innerHTML = Object.getOwnPropertyNames(myFather);
+		document.getElementById('p-20').innerHTML = Object.keys(myFather);
+		Object.defineProperty(myFather, "age", {enumerable:false});
+		document.getElementById('p-21').innerHTML = Object.keys(myFather);
+		Object.defineProperty(myFather, "favClub", {value:"AC Milan"});
+		document.getElementById('p-22').innerHTML = myFather.favClub;
+		// Dodavanje getter-a uz pomoc Object define property
+		Object.defineProperty(myFather, "combination2" , {
+			get: function() {
+				return this. age + " " + this.favClub;
+			}
+		});
+		document.getElementById('p-23').innerHTML = myFather.combination2;
+
+		document.getElementById('p-24').innerHTML = Object.isExtensible(myFather);
+		Object.preventExtensions(mySister);
+		document.getElementById('p-25').innerHTML = Object.isExtensible(mySister);
+		document.getElementById('p-26').innerHTML = Object.isSealed(mySister);
+		document.getElementById('p-27').innerHTML = Object.isFrozen(myMother);
+	</script>
+
+</body> 
+
+</html>
